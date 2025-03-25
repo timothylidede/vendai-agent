@@ -1,0 +1,6 @@
+2025/03/26-01:15:41.575 8378 Reusing MANIFEST C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/03/26-01:15:41.575 8378 Recovering log #53
+2025/03/26-01:15:41.607 8378 Reusing old log C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000053.log 
+2025/03/26-01:15:41.607 8378 Delete type=2 #51
+2025/03/26-01:15:41.607 8378 Delete type=2 #54
+2025/03/26-01:15:43.446 215c Manual compaction at level-0 from '\x00\x1d\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1e\x00\x00\x00' @ 0 : 0; will stop at (end)

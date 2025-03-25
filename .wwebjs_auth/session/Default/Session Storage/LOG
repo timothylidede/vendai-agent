@@ -1,2 +1,3 @@
-2025/03/25-01:15:59.157 2b84 Creating DB C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\Session Storage since it was missing.
-2025/03/25-01:15:59.176 2b84 Reusing MANIFEST C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001
+2025/03/26-01:23:58.103 a034 Reusing MANIFEST C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\Session Storage/MANIFEST-000001
+2025/03/26-01:23:58.103 a034 Recovering log #3
+2025/03/26-01:23:58.103 a034 Reusing old log C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\Session Storage/000003.log 

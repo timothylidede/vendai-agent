@@ -3,124 +3,286 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const axios = require('axios');
 
-// Environment variables for DeepSeek API
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
-const DEEPSEEK_API_URL = process.env.DEEPSEEK_API_URL || 'https://api.deepseek.com/v1/completions'; // Default URL (hypothetical)
+// **Dummy User Database** (replace with an actual database in production)
+const userDatabase = {
+  '+254700123456': {
+    registered: false,
+    firstName: null,
+    lastName: null,
+    location: null
+  }
+};
 
-// Initialize WhatsApp client with local session storage
+// **Product Inventory**
+const inventory = {
+  flour: {
+    price: 50,
+    unit: 'kg',
+    alternatives: ['wheat flour', 'bread flour']
+  },
+  sugar: {
+    price: 60,
+    unit: 'kg',
+    alternatives: ['brown sugar', 'powdered sugar']
+  },
+  rice: {
+    price: 45,
+    unit: 'kg',
+    alternatives: ['basmati rice', 'jasmine rice']
+  }
+};
+
+// **DeepSeek AI Model Helper**
+class DeepSeekAI {
+  constructor() {
+    this.apiKey = process.env.DEEPSEEK_API_KEY;
+    this.apiUrl = process.env.DEEPSEEK_API_URL;
+  }
+
+  async generateResponse(messages) {
+    try {
+      const response = await axios.post(this.apiUrl, {
+        messages: messages,
+        model: "deepseek-chat",
+        temperature: 0.7
+      }, {
+        headers: {
+          'Authorization': `Bearer ${this.apiKey}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      return response.data.choices[0].message.content;
+    } catch (error) {
+      console.error('DeepSeek API Error:', error.response ? error.response.data : error.message);
+      throw error;
+    }
+  }
+
+  async validateName(input, type) {
+    const messages = [
+      {
+        role: "system", 
+        content: `You are a helpful customer service assistant. Evaluate if the input is a valid ${type} name. Respond with "valid" or "invalid".`
+      },
+      {
+        role: "user", 
+        content: `Is "${input}" a valid ${type} name? Respond with just "valid" or "invalid".`
+      }
+    ];
+
+    const response = await this.generateResponse(messages);
+    return response.trim().toLowerCase();
+  }
+
+  async interpretName(input, expectedField) {
+    const messages = [
+      {
+        role: "system", 
+        content: "You are a helpful customer service assistant. Interpret the user's response and guide them to provide a proper first name or last name."
+      },
+      {
+        role: "user", 
+        content: `The user responded with: "${input}". This was in response to asking for their ${expectedField}. Please provide a helpful, guiding response.`
+      }
+    ];
+
+    return await this.generateResponse(messages);
+  }
+}
+
+// **Initialize DeepSeek AI Model**
+const chatModel = new DeepSeekAI();
+
+// **Initialize WhatsApp Client**
 const client = new Client({
-  authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth()
 });
 
-// Generate QR code for authentication
+// **User Conversation States**
+const userStates = new Map();
+
+// **Conversation Stages**
+const STATES = {
+  ASKING_FIRST_NAME: 'asking_first_name',
+  ASKING_LAST_NAME: 'asking_last_name',
+  ASKING_LOCATION: 'asking_location',
+  TAKING_ORDER: 'taking_order',
+  SELECTING_QUANTITY: 'selecting_quantity',
+  CONFIRMING_ORDER: 'confirming_order',
+  IDLE: 'idle'
+};
+
+// **Generate Location Sharing Guide**
+function getLocationSharingGuide() {
+  return `📍 How to Share Location on WhatsApp:
+1. Open the chat
+2. Tap the attachment (📎) icon
+3. Select "Location"
+4. Choose "Send Your Current Location"
+5. Tap Send
+
+This helps us deliver your order accurately! 🚚`;
+}
+
+// **Find Product Based on User Input**
+function findProduct(requestedProduct) {
+  const lowerRequested = requestedProduct.toLowerCase();
+
+  // Check if it's a main product
+  if (inventory[lowerRequested]) {
+    return lowerRequested;
+  }
+
+  // Check if it's an alternative
+  for (const [product, data] of Object.entries(inventory)) {
+    if (data.alternatives.some(alt => alt.toLowerCase() === lowerRequested)) {
+      return product;
+    }
+  }
+
+  return null;
+}
+
+// **Client Initialization Events**
 client.on('qr', (qr) => {
   qrcode.generate(qr, { small: true });
   console.log('Scan the QR code with your WhatsApp app.');
 });
 
-// Log when the client is ready
 client.on('ready', () => {
   console.log('WhatsApp Client is ready!');
 });
 
-// Sample inventory (replace with database in Phase 2)
-const inventory = {
-  flour: { price: 50, unit: 'kg' },
-  sugar: { price: 60, unit: 'kg' },
-};
-
-// Track user orders
-const userOrders = new Map();
-
-// Function to process messages with DeepSeek
-async function processMessageWithDeepSeek(message) {
-  try {
-    const response = await axios.post(
-      DEEPSEEK_API_URL,
-      {
-        prompt: `Interpret this merchant order and suggest a reply: "${message}"\nAvailable items: Flour (50 KES/kg), Sugar (60 KES/kg)`,
-        max_tokens: 100,
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    return response.data.choices[0].text.trim();
-  } catch (error) {
-    console.error('DeepSeek API Error:', error.response ? error.response.data : error.message);
-    return 'Sorry, I couldn’t process your request. Please try again.';
-  }
-}
-
-// Handle incoming messages
+// **Message Handling**
 client.on('message', async (msg) => {
-  const userMessage = msg.body.toLowerCase();
+  const userMessage = msg.body.trim();
   const from = msg.from;
 
-  // Start or reset the conversation
-  if (userMessage === 'hi' || userMessage === 'start') {
-    userOrders.delete(from); // Reset any existing order
-    msg.reply(
-      'Welcome to VendAI! Select an item:\n1. Flour (50 KES/kg)\n2. Sugar (60 KES/kg)\nOr type your order directly (e.g., "10kg flour, 5kg sugar").'
-    );
-    return;
+  // Initialize user in database if not present
+  if (!userDatabase[from]) {
+    userDatabase[from] = {
+      registered: false,
+      firstName: null,
+      lastName: null,
+      location: null
+    };
   }
 
-  // Menu navigation: Select Flour
-  if (userMessage === '1') {
-    msg.reply('How many kg of Flour? (e.g., "10kg")');
-    userOrders.set(from, { item: 'flour', quantity: 0 });
-    return;
+  const userData = userDatabase[from];
+  let userState = userStates.get(from);
+
+  // Set initial state if none exists
+  if (!userState) {
+    userState = { stage: userData.registered ? STATES.IDLE : STATES.ASKING_FIRST_NAME };
+    userStates.set(from, userState);
   }
 
-  // Menu navigation: Select Sugar
-  if (userMessage === '2') {
-    msg.reply('How many kg of Sugar? (e.g., "5kg")');
-    userOrders.set(from, { item: 'sugar', quantity: 0 });
-    return;
-  }
+  try {
+    // **Registration Flow for Unregistered Users**
+    if (!userData.registered) {
+      switch (userState.stage) {
+        case STATES.ASKING_FIRST_NAME:
+          const firstNameValidation = await chatModel.validateName(userMessage, 'first');
+          if (firstNameValidation.trim().toLowerCase() === 'valid') {
+            userData.firstName = userMessage;
+            msg.reply(`Nice to meet you, ${userData.firstName}! What is your last name?`);
+            userState.stage = STATES.ASKING_LAST_NAME;
+          } else {
+            const interpretationResponse = await chatModel.interpretName(userMessage, 'first name');
+            msg.reply(interpretationResponse);
+          }
+          return;
 
-  // Quantity input
-  if (/(\d+)kg/.test(userMessage)) {
-    const quantity = parseInt(userMessage.match(/(\d+)/)[0]);
-    const order = userOrders.get(from) || { item: null, quantity: 0 };
+        case STATES.ASKING_LAST_NAME:
+          const lastNameValidation = await chatModel.validateName(userMessage, 'last');
+          if (lastNameValidation.trim().toLowerCase() === 'valid') {
+            userData.lastName = userMessage;
+            msg.reply(getLocationSharingGuide());
+            msg.reply('Could you please share your location?');
+            userState.stage = STATES.ASKING_LOCATION;
+          } else {
+            const interpretationResponse = await chatModel.interpretName(userMessage, 'last name');
+            msg.reply(interpretationResponse);
+          }
+          return;
 
-    if (order.item) {
-      order.quantity = quantity;
-      const total = order.quantity * inventory[order.item].price;
-      const summary = `Order Summary:\n${order.quantity}kg ${order.item} @ ${inventory[order.item].price} KES/kg = ${total} KES\nConfirm? (Yes/No)`;
-      msg.reply(summary);
-      userOrders.set(from, order);
+        case STATES.ASKING_LOCATION:
+          if (msg.location) {
+            userData.location = {
+              latitude: msg.location.latitude,
+              longitude: msg.location.longitude
+            };
+            userData.registered = true;
+            msg.reply(`Thank you, ${userData.firstName}! You're now registered. What would you like to order?`);
+            userState.stage = STATES.TAKING_ORDER;
+          } else {
+            msg.reply('Please share your location using WhatsApp\'s location feature.');
+          }
+          return;
+      }
     } else {
-      msg.reply('Please select an item first (e.g., "1" for Flour, "2" for Sugar).');
+      // **Ordering Flow for Registered Users**
+      if (userState.stage === STATES.IDLE && (userMessage.toLowerCase() === 'hi' || userMessage.toLowerCase() === 'hello')) {
+        msg.reply(`Hi ${userData.firstName}! What would you like to order today? We have: ${Object.keys(inventory).join(', ')}`);
+        userState.stage = STATES.TAKING_ORDER;
+        return;
+      }
+
+      if (userState.stage === STATES.TAKING_ORDER) {
+        const product = findProduct(userMessage);
+        if (product) {
+          msg.reply(`Great! How many ${inventory[product].unit} of ${product} would you like?`);
+          userState.stage = STATES.SELECTING_QUANTITY;
+          userState.product = product;
+        } else {
+          msg.reply(`Sorry, we don't have "${userMessage}". Available products are: ${Object.keys(inventory).join(', ')}`);
+        }
+        return;
+      }
+
+      if (userState.stage === STATES.SELECTING_QUANTITY) {
+        const quantity = parseInt(userMessage.replace(/\D/g, ''));
+        if (isNaN(quantity)) {
+          msg.reply('Please enter a valid quantity.');
+          return;
+        }
+
+        const product = userState.product;
+        const total = quantity * inventory[product].price;
+        msg.reply(`Order Summary:
+• Product: ${product}
+• Quantity: ${quantity} ${inventory[product].unit}
+• Price per ${inventory[product].unit}: ${inventory[product].price} KES
+• Total: ${total} KES
+Confirm order? (Yes/No)`);
+        userState.stage = STATES.CONFIRMING_ORDER;
+        userState.quantity = quantity;
+        userState.total = total;
+        return;
+      }
+
+      if (userState.stage === STATES.CONFIRMING_ORDER) {
+        if (userMessage.toLowerCase() === 'yes') {
+          msg.reply(`Order confirmed! We'll process your ${userState.quantity} ${inventory[userState.product].unit} of ${userState.product} soon. Total: ${userState.total} KES.`);
+          userStates.delete(from);
+        } else if (userMessage.toLowerCase() === 'no') {
+          msg.reply('Order canceled. What would you like to order instead?');
+          userState.stage = STATES.TAKING_ORDER;
+        } else {
+          msg.reply('Please reply with "Yes" to confirm or "No" to cancel.');
+        }
+        return;
+      }
+
+      // Default response for registered users
+      msg.reply(`Hi ${userData.firstName}, say "Hi" to start ordering.`);
     }
-    return;
+  } catch (error) {
+    console.error('Error processing message:', error);
+    msg.reply('Sorry, something went wrong. Please try again.');
   }
-
-  // Order confirmation
-  if (userMessage === 'yes' && userOrders.has(from)) {
-    const order = userOrders.get(from);
-    const total = order.quantity * inventory[order.item].price;
-    msg.reply(`Order confirmed! Total: ${total} KES. Payment link coming soon...`);
-    userOrders.delete(from); // Clear order after confirmation
-    return;
-  }
-
-  // Order cancellation
-  if (userMessage === 'no' && userOrders.has(from)) {
-    msg.reply('Order canceled. Start again with "Hi".');
-    userOrders.delete(from);
-    return;
-  }
-
-  // Fallback to DeepSeek for natural language orders
-  const reply = await processMessageWithDeepSeek(userMessage);
-  msg.reply(reply);
 });
 
-// Start the client
+// **Start the Client**
 client.initialize();
