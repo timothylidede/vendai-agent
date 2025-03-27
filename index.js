@@ -1,288 +1,248 @@
 require('dotenv').config();
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+const csv = require('csv-parser');
+const fs = require('fs');
 const axios = require('axios');
 
-// **Dummy User Database** (replace with an actual database in production)
-const userDatabase = {
-  '+254700123456': {
-    registered: false,
-    firstName: null,
-    lastName: null,
-    location: null
-  }
-};
+// Configuration
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const ADMIN_NUMBER = '254795536131';
 
-// **Product Inventory**
-const inventory = {
-  flour: {
-    price: 50,
-    unit: 'kg',
-    alternatives: ['wheat flour', 'bread flour']
-  },
-  sugar: {
-    price: 60,
-    unit: 'kg',
-    alternatives: ['brown sugar', 'powdered sugar']
-  },
-  rice: {
-    price: 45,
-    unit: 'kg',
-    alternatives: ['basmati rice', 'jasmine rice']
-  }
-};
+// Enhanced Inventory Management
+class InventoryManager {
+    constructor() {
+        this.products = [];
+        this.categories = new Set();
+        this.loadInventory();
+    }
 
-// **DeepSeek AI Model Helper**
-class DeepSeekAI {
-  constructor() {
-    this.apiKey = process.env.DEEPSEEK_API_KEY;
-    this.apiUrl = process.env.DEEPSEEK_API_URL;
-  }
+    loadInventory() {
+        fs.createReadStream('one-stop-wholesalers.csv')
+            .pipe(csv())
+            .on('data', (data) => {
+                // Enhanced data processing
+                data.cleanPrice = parseFloat(data.Price.replace(/[^\d.]/g, ''));
+                data.keywords = this.extractKeywords(data['Product Name']);
+                
+                // Track unique categories
+                if (data.Category) {
+                    this.categories.add(data.Category.toLowerCase().trim());
+                }
+                
+                this.products.push(data);
+            })
+            .on('end', () => {
+                console.log('Inventory loaded:', this.products.length);
+                console.log('Categories:', Array.from(this.categories));
+            });
+    }
 
-  async generateResponse(messages) {
+    // Advanced keyword extraction for better matching
+    extractKeywords(productName) {
+        return productName.toLowerCase()
+            .split(/\s+/)
+            .filter(word => word.length > 2 && !['the', 'and', 'with'].includes(word));
+    }
+
+    // Advanced product search with multiple matching strategies
+    findProducts(query, context = {}) {
+        const lowercaseQuery = query.toLowerCase();
+        
+        // Scoring-based matching
+        const scoredProducts = this.products.map(product => {
+            let score = 0;
+            const productName = product['Product Name'].toLowerCase();
+            const productKeywords = product.keywords;
+
+            // Exact name match
+            if (productName === lowercaseQuery) score += 100;
+            
+            // Keyword matches
+            const queryWords = lowercaseQuery.split(/\s+/);
+            queryWords.forEach(word => {
+                if (productKeywords.includes(word)) score += 50;
+                if (productName.includes(word)) score += 30;
+            });
+
+            // Category match if context provided
+            if (context.category && 
+                product.Category && 
+                product.Category.toLowerCase() === context.category.toLowerCase()) {
+                score += 75;
+            }
+
+            // Price range consideration
+            if (context.priceRange) {
+                const { min, max } = context.priceRange;
+                if (product.cleanPrice >= min && product.cleanPrice <= max) {
+                    score += 25;
+                }
+            }
+
+            return { ...product, score };
+        });
+
+        // Sort by score and filter top results
+        return scoredProducts
+            .filter(p => p.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 5);
+    }
+
+    // Generate smart product recommendations
+    getRecommendations(currentCart, context) {
+        if (currentCart.length === 0) return [];
+
+        // Find related products based on cart contents
+        const cartCategories = [...new Set(currentCart.map(item => item.Category))];
+        const recommendedProducts = this.products
+            .filter(product => 
+                cartCategories.includes(product.Category) && 
+                !currentCart.some(cartItem => cartItem['Product Name'] === product['Product Name'])
+            )
+            .slice(0, 3);
+
+        return recommendedProducts;
+    }
+}
+
+// Enhanced AI Analysis
+async function analyzeMessage(userInput, session) {
     try {
-      const response = await axios.post(this.apiUrl, {
-        messages: messages,
-        model: "deepseek-chat",
-        temperature: 0.7
-      }, {
-        headers: {
-          'Authorization': `Bearer ${this.apiKey}`,
-          'Content-Type': 'application/json'
-        }
-      });
+        const response = await axios.post(
+            'https://api.deepseek.com/v1/chat/completions',
+            {
+                model: "deepseek-chat",
+                messages: [
+                    {
+                        role: "system",
+                        content: `Advanced message analysis with rich context:
+                        - Analyze user's intent with deep context awareness
+                        - Current cart: ${JSON.stringify(session.cart)}
+                        - Previous interactions: ${JSON.stringify(session.lastInquiry)}
+                        - Detect nuanced intents like price range, product category, specific requirements
+                        Respond with enriched JSON: { 
+                            "intent": "greeting" | "product_inquiry" | "cart_management" | "recommendation" | "question",
+                            "context": {
+                                "category": "optional category",
+                                "priceRange": {"min": number, "max": number},
+                                "additionalDetails": "any specific user requirements"
+                            },
+                            "response": "natural language contextual reply"
+                        }`
+                    },
+                    { role: "user", content: userInput }
+                ],
+                temperature: 0.4
+            },
+            {
+                headers: {
+                    'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
 
-      return response.data.choices[0].message.content;
+        let content = response.data.choices[0].message.content;
+        if (content.startsWith('```json') && content.endsWith('```')) {
+            content = content.slice(7, -3).trim();
+        }
+        return JSON.parse(content);
     } catch (error) {
-      console.error('DeepSeek API Error:', error.response ? error.response.data : error.message);
-      throw error;
+        console.error('AI Analysis Error:', error);
+        return null;
     }
-  }
-
-  async validateName(input, type) {
-    const messages = [
-      {
-        role: "system", 
-        content: `You are a helpful customer service assistant. Evaluate if the input is a valid ${type} name. Respond with "valid" or "invalid".`
-      },
-      {
-        role: "user", 
-        content: `Is "${input}" a valid ${type} name? Respond with just "valid" or "invalid".`
-      }
-    ];
-
-    const response = await this.generateResponse(messages);
-    return response.trim().toLowerCase();
-  }
-
-  async interpretName(input, expectedField) {
-    const messages = [
-      {
-        role: "system", 
-        content: "You are a helpful customer service assistant. Interpret the user's response and guide them to provide a proper first name or last name."
-      },
-      {
-        role: "user", 
-        content: `The user responded with: "${input}". This was in response to asking for their ${expectedField}. Please provide a helpful, guiding response.`
-      }
-    ];
-
-    return await this.generateResponse(messages);
-  }
 }
 
-// **Initialize DeepSeek AI Model**
-const chatModel = new DeepSeekAI();
+// WhatsApp Bot Manager
+class WhatsAppBot {
+    constructor() {
+        this.inventoryManager = new InventoryManager();
+        this.userSessions = new Map();
+        this.initializeWhatsAppClient();
+    }
 
-// **Initialize WhatsApp Client**
-const client = new Client({
-  authStrategy: new LocalAuth()
-});
+    initializeWhatsAppClient() {
+        this.client = new Client({ authStrategy: new LocalAuth() });
+        this.client.on('message', this.handleMessage.bind(this));
+        this.client.initialize();
+    }
 
-// **User Conversation States**
-const userStates = new Map();
+    // Comprehensive message handling
+    async handleMessage(msg) {
+        const userNumber = msg.from;
+        const contact = await this.client.getContactById(userNumber);
+        const displayName = contact.pushname || 'Customer';
+        const userInput = msg.body.trim();
 
-// **Conversation Stages**
-const STATES = {
-  ASKING_FIRST_NAME: 'asking_first_name',
-  ASKING_LAST_NAME: 'asking_last_name',
-  ASKING_LOCATION: 'asking_location',
-  TAKING_ORDER: 'taking_order',
-  SELECTING_QUANTITY: 'selecting_quantity',
-  CONFIRMING_ORDER: 'confirming_order',
-  IDLE: 'idle'
-};
+        // Initialize or retrieve user session
+        if (!this.userSessions.has(userNumber)) {
+            this.userSessions.set(userNumber, {
+                name: displayName,
+                cart: [],
+                stage: 'awaiting_product',
+                lastInquiry: null,
+                conversationContext: {}
+            });
+        }
+        const session = this.userSessions.get(userNumber);
 
-// **Generate Location Sharing Guide**
-function getLocationSharingGuide() {
-  return `📍 How to Share Location on WhatsApp:
-1. Open the chat
-2. Tap the attachment (📎) icon
-3. Select "Location"
-4. Choose "Send Your Current Location"
-5. Tap Send
+        // Advanced AI-powered message analysis
+        const aiAnalysis = await analyzeMessage(userInput, session);
+        if (!aiAnalysis) {
+            return msg.reply("I'm experiencing some technical difficulties. Could you please try again?");
+        }
 
-This helps us deliver your order accurately! 🚚`;
+        // Intelligent response routing
+        switch (aiAnalysis.intent) {
+            case "greeting":
+                msg.reply(`Hello ${displayName}! How can I help you find the perfect products today?`);
+                break;
+
+            case "product_inquiry":
+                const searchContext = aiAnalysis.context || {};
+                const matchedProducts = this.inventoryManager.findProducts(userInput, searchContext);
+                
+                if (matchedProducts.length > 0) {
+                    session.matches = matchedProducts;
+                    session.stage = 'product_selection';
+                    session.lastInquiry = { input: userInput, context: searchContext };
+
+                    const productList = this.formatProducts(matchedProducts);
+                    msg.reply(`I found some great matches:\n\n${productList}\n\nReply with a number (1-${matchedProducts.length}) to add to cart or say 'more details'.`);
+                } else {
+                    msg.reply("I couldn't find any products matching your description. Would you like to try a different search?");
+                }
+                break;
+
+            case "cart_management":
+                // Implement cart-specific logic
+                break;
+
+            case "recommendation":
+                const recommendations = this.inventoryManager.getRecommendations(session.cart, session.conversationContext);
+                if (recommendations.length > 0) {
+                    const recommendList = this.formatProducts(recommendations);
+                    msg.reply(`Based on your current cart, I recommend:\n\n${recommendList}`);
+                }
+                break;
+
+            case "question":
+                msg.reply(aiAnalysis.response || "Great question! How can I provide more clarity?");
+                break;
+
+            default:
+                msg.reply("I'm not quite sure how to help. Could you rephrase or be more specific?");
+        }
+    }
+
+    formatProducts(products) {
+        return products.map((p, i) => 
+            `${i + 1}. ${p['Product Name']} - ${p.Price} (${p.Category || 'Uncategorized'})`
+        ).join('\n');
+    }
 }
 
-// **Find Product Based on User Input**
-function findProduct(requestedProduct) {
-  const lowerRequested = requestedProduct.toLowerCase();
-
-  // Check if it's a main product
-  if (inventory[lowerRequested]) {
-    return lowerRequested;
-  }
-
-  // Check if it's an alternative
-  for (const [product, data] of Object.entries(inventory)) {
-    if (data.alternatives.some(alt => alt.toLowerCase() === lowerRequested)) {
-      return product;
-    }
-  }
-
-  return null;
-}
-
-// **Client Initialization Events**
-client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true });
-  console.log('Scan the QR code with your WhatsApp app.');
-});
-
-client.on('ready', () => {
-  console.log('WhatsApp Client is ready!');
-});
-
-// **Message Handling**
-client.on('message', async (msg) => {
-  const userMessage = msg.body.trim();
-  const from = msg.from;
-
-  // Initialize user in database if not present
-  if (!userDatabase[from]) {
-    userDatabase[from] = {
-      registered: false,
-      firstName: null,
-      lastName: null,
-      location: null
-    };
-  }
-
-  const userData = userDatabase[from];
-  let userState = userStates.get(from);
-
-  // Set initial state if none exists
-  if (!userState) {
-    userState = { stage: userData.registered ? STATES.IDLE : STATES.ASKING_FIRST_NAME };
-    userStates.set(from, userState);
-  }
-
-  try {
-    // **Registration Flow for Unregistered Users**
-    if (!userData.registered) {
-      switch (userState.stage) {
-        case STATES.ASKING_FIRST_NAME:
-          const firstNameValidation = await chatModel.validateName(userMessage, 'first');
-          if (firstNameValidation.trim().toLowerCase() === 'valid') {
-            userData.firstName = userMessage;
-            msg.reply(`Nice to meet you, ${userData.firstName}! What is your last name?`);
-            userState.stage = STATES.ASKING_LAST_NAME;
-          } else {
-            const interpretationResponse = await chatModel.interpretName(userMessage, 'first name');
-            msg.reply(interpretationResponse);
-          }
-          return;
-
-        case STATES.ASKING_LAST_NAME:
-          const lastNameValidation = await chatModel.validateName(userMessage, 'last');
-          if (lastNameValidation.trim().toLowerCase() === 'valid') {
-            userData.lastName = userMessage;
-            msg.reply(getLocationSharingGuide());
-            msg.reply('Could you please share your location?');
-            userState.stage = STATES.ASKING_LOCATION;
-          } else {
-            const interpretationResponse = await chatModel.interpretName(userMessage, 'last name');
-            msg.reply(interpretationResponse);
-          }
-          return;
-
-        case STATES.ASKING_LOCATION:
-          if (msg.location) {
-            userData.location = {
-              latitude: msg.location.latitude,
-              longitude: msg.location.longitude
-            };
-            userData.registered = true;
-            msg.reply(`Thank you, ${userData.firstName}! You're now registered. What would you like to order?`);
-            userState.stage = STATES.TAKING_ORDER;
-          } else {
-            msg.reply('Please share your location using WhatsApp\'s location feature.');
-          }
-          return;
-      }
-    } else {
-      // **Ordering Flow for Registered Users**
-      if (userState.stage === STATES.IDLE && (userMessage.toLowerCase() === 'hi' || userMessage.toLowerCase() === 'hello')) {
-        msg.reply(`Hi ${userData.firstName}! What would you like to order today? We have: ${Object.keys(inventory).join(', ')}`);
-        userState.stage = STATES.TAKING_ORDER;
-        return;
-      }
-
-      if (userState.stage === STATES.TAKING_ORDER) {
-        const product = findProduct(userMessage);
-        if (product) {
-          msg.reply(`Great! How many ${inventory[product].unit} of ${product} would you like?`);
-          userState.stage = STATES.SELECTING_QUANTITY;
-          userState.product = product;
-        } else {
-          msg.reply(`Sorry, we don't have "${userMessage}". Available products are: ${Object.keys(inventory).join(', ')}`);
-        }
-        return;
-      }
-
-      if (userState.stage === STATES.SELECTING_QUANTITY) {
-        const quantity = parseInt(userMessage.replace(/\D/g, ''));
-        if (isNaN(quantity)) {
-          msg.reply('Please enter a valid quantity.');
-          return;
-        }
-
-        const product = userState.product;
-        const total = quantity * inventory[product].price;
-        msg.reply(`Order Summary:
-• Product: ${product}
-• Quantity: ${quantity} ${inventory[product].unit}
-• Price per ${inventory[product].unit}: ${inventory[product].price} KES
-• Total: ${total} KES
-Confirm order? (Yes/No)`);
-        userState.stage = STATES.CONFIRMING_ORDER;
-        userState.quantity = quantity;
-        userState.total = total;
-        return;
-      }
-
-      if (userState.stage === STATES.CONFIRMING_ORDER) {
-        if (userMessage.toLowerCase() === 'yes') {
-          msg.reply(`Order confirmed! We'll process your ${userState.quantity} ${inventory[userState.product].unit} of ${userState.product} soon. Total: ${userState.total} KES.`);
-          userStates.delete(from);
-        } else if (userMessage.toLowerCase() === 'no') {
-          msg.reply('Order canceled. What would you like to order instead?');
-          userState.stage = STATES.TAKING_ORDER;
-        } else {
-          msg.reply('Please reply with "Yes" to confirm or "No" to cancel.');
-        }
-        return;
-      }
-
-      // Default response for registered users
-      msg.reply(`Hi ${userData.firstName}, say "Hi" to start ordering.`);
-    }
-  } catch (error) {
-    console.error('Error processing message:', error);
-    msg.reply('Sorry, something went wrong. Please try again.');
-  }
-});
-
-// **Start the Client**
-client.initialize();
+// Initialize and start the bot
+const whatsAppBot = new WhatsAppBot();
+console.log('Advanced WhatsApp Product Suggestion Bot Started...');
