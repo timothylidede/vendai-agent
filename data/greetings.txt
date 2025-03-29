@@ -1,16 +1,13 @@
-Dialog of Greetings: AI Online Receptionist and Client
-
-Sample Greeting Dialog 5:
-AI: Dear customer, You’ve reached VendAI. We hope you are having a good time. I’m here to make your shopping easy—what can I do for you today? We have
-the following categories of goods. 
-- Beauty & Personal Care
-- Beverages
-- Breakfast
-- Detergents
-- Foodstuff
-- Gas Cylinders
-- Grocery
-- Sauces & Spices
-What specific category will you be looking into today?
-Client: Hello! I need some personal care items.
-AI: Got it! You’re interested in Beauty & Personal Care. Anything specific, like a moisturizer or shampoo?
+AI: Dear customer, You’ve reached VendAI. I’m here to make 
+your shopping easy. We have the following categories of goods. 
+1. Beauty & Personal Care
+2. Beverages
+3. Breakfast
+4. Detergents
+5. Foodstuff
+6. Gas Cylinders
+7. Grocery
+8. Sauces & Spices 
+What specific category are you interested in?
+Client: Hello! I need some goods in this category ...
+AI: Got it! You’re interested in ... We have the following in that category ...

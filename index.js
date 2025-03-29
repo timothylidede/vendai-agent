@@ -161,7 +161,7 @@ class WhatsAppBot {
         communicationhistoryList.push({"role":"user", "content":userInput});
         console.log('Context has been found:', context);
         // const query = userInput + " with this context " + context;
-        const query = `Use the below context material to answer the subsequent question. If the answer cannot be found, write "I don't know."
+        const query = `Use the context below to answer the subsequent question."
 
                 context: ${context + systemPrompt + commsHistoryString}
                 Question:` + userInput;
