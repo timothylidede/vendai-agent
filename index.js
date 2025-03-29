@@ -5,6 +5,7 @@ const fs = require('fs');
 const axios = require('axios');
 import { OpenAI } from "openai";
 import { systemPrompt } from "./systemPrompt";
+import {getContext} from "./context";
 // const openai = new OpenAI();
 
 // Configuration
@@ -24,8 +25,8 @@ async function getResponseFromDeepSeek(userQuery) {
         model: "deepseek-chat",
       });
     
-      console.log(completion.choices[0].message.content);
-    
+    //   console.log();
+    return completion.choices[0].message.content
 }
 
 // Enhanced Inventory Management
@@ -215,6 +216,11 @@ class WhatsAppBot {
 
         // Advanced AI-powered message analysis
         // const aiAnalysis = await analyzeMessage(userInput, session);
+
+        context = await getContext(userInput);
+        query = userInput + " " + context;
+        response = await getResponseFromDeepSeek(query);
+        
 
         
 

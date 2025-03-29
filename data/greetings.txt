@@ -1,0 +1,34 @@
+Dialog of Greetings: AI Online Receptionist and Client
+
+AI: Hello! Welcome to VendAI. I’m here to help you find what you need today—what can I assist you with?
+Client: Hi there! I’m just looking around.
+AI: Hi there! Glad you stopped by VendAI. Are you looking for something in particular, like a beverage, a cleaning product, or maybe some spices for cooking?
+Client: Oh, thanks! Maybe something to drink.
+AI: Great! You’re interested in Beverages. Did you have a specific drink in mind?
+
+Sample Greeting Dialogs for AI Online Receptionist at VendAI
+
+Sample Greeting Dialog 1:
+AI: Hello! Welcome to VendAI. I’m here to help you find what you need today—what can I assist you with?
+Client: Hi! I’m looking for something to clean with.
+AI: Great! Sounds like you’re interested in Detergents. Did you have a specific cleaning product in mind?
+
+Sample Greeting Dialog 2:
+AI: Hi there! Thanks for stopping by VendAI. What’s on your mind today—looking for something specific or just browsing?
+Client: Hey! I need a drink.
+AI: Awesome! You’re in the Beverages category. Any particular drink you’re thinking of?
+
+Sample Greeting Dialog 3:
+AI: Good day! Welcome to VendAI. I’d love to assist you with your shopping today—what can I help you find?
+Client: Good day! Maybe some breakfast stuff.
+AI: Nice choice! You’re looking at our Breakfast category. Did you want something like cereal or pancake mix?
+
+Sample Greeting Dialog 4:
+AI: Hey there! Hello from VendAI! I’m ready to help you out—what brought you here today?
+Client: Hi! I want something spicy.
+AI: Spicy, huh? That sounds like Sauces & Spices! Are you thinking hot sauce or a spice blend?
+
+Sample Greeting Dialog 5:
+AI: Greetings! You’ve reached VendAI. I’m here to make your shopping easy—what can I do for you today?
+Client: Hello! I need some personal care items.
+AI: Got it! You’re interested in Beauty & Personal Care. Anything specific, like a moisturizer or shampoo?
