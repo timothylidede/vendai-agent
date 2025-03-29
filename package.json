@@ -8,14 +8,25 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type":"module",
   "dependencies": {
     "@langchain/core": "^0.3.43",
     "@langchain/openai": "^0.5.0",
     "axios": "^1.8.4",
+    "better-sqlite3": "^11.9.1",
     "csv-parser": "^3.2.0",
     "dotenv": "^16.4.7",
+    "ollama": "^0.5.14",
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.26.0"
-  }
+    "whatsapp-web.js": "^1.27.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/timothylidede/vendai-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/timothylidede/vendai-agent/issues"
+  },
+  "homepage": "https://github.com/timothylidede/vendai-agent#readme",
+  "description": ""
 }

@@ -1,0 +1,22 @@
+Product Name,Price,Category
+Avocado,KSh 20.00,Grocery
+Banana sack,KSh 100.00,Grocery
+Carrots 1kg,KSh 100.00,Grocery
+Carrots 5kg,KSh 500.00,Grocery
+Garlic 1kg,KSh 500.00,Grocery
+Mango,KSh 30.00,Grocery
+Onion 10kg sack,"KSh 2,000.00",Grocery
+Onion 1kg,KSh 100.00,Grocery
+Onion 20kg sack,"KSh 4,000.00",Grocery
+Onion 5kg sack,"KSh 1,000.00",Grocery
+Orange sack,KSh 500.00,Grocery
+Pineapple,KSh 120.00,Grocery
+Potatoes 10kg,"KSh 1,000.00",Grocery
+Potatoes 1kg,KSh 100.00,Grocery
+Potatoes 20kg,"KSh 2,000.00",Grocery
+Potatoes 5kg,KSh 500.00,Grocery
+Tomato 10kg sack,"KSh 1,000.00",Grocery
+Tomato 1kg,KSh 100.00,Grocery
+Tomato 20kg sack,"KSh 2,000.00",Grocery
+Tomato 5kg,KSh 500.00,Grocery
+Watermelon,KSh 300.00,Grocery

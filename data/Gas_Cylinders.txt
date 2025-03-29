@@ -1,0 +1,20 @@
+Product Name,Price,Category
+AfriGas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
+AfriGas 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders
+Hashi 50kg Gas Refill,"KSh 8,500.00",Gas Cylinders
+Hashi 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders
+Hass 50Kg Gas Refill,"KSh 8,500.00",Gas Cylinders
+Hass Composite Gas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
+Hass Gas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
+KGas 13kg Refill,"KSh 2,800.00",Gas Cylinders
+KGas 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders
+Lake Gas 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders
+Lakegas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
+Progas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
+ProGas 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders
+Rosa pharm Moto sawa fuel gel 1l,KSh 320.00,Gas Cylinders
+Rosa pharm Moto sawa fuel gel 500ml,KSh 200.00,Gas Cylinders
+Safegas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
+Total 50kg Gas Refill,"KSh 8,500.00",Gas Cylinders
+Total 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders
+Totalgas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders

@@ -1,0 +1,89 @@
+Product Name,Price,Category
+Always ultra thick blue,KSh 120.00,Beauty & Personal Care
+Amara lotion 400ml,KSh 300.00,Beauty & Personal Care
+Ariel soap 3kg machine wash,"KSh 1,850.00",Beauty & Personal Care
+Bella tissue 10 pack,KSh 450.00,Beauty & Personal Care
+Bella tissue jumbo roll,KSh 150.00,Beauty & Personal Care
+Bella tissue pc,KSh 50.00,Beauty & Personal Care
+Colgate Charcoal 120g,KSh 330.00,Beauty & Personal Care
+Colgate herbal 100ml,KSh 150.00,Beauty & Personal Care
+Colgate red 100ml,KSh 150.00,Beauty & Personal Care
+Dabur herbal T/paste Neem Gum 150g,KSh 280.00,Beauty & Personal Care
+Dabur T/paste Charcoal 150g,KSh 400.00,Beauty & Personal Care
+Dabur T/paste Cloves 150g,KSh 280.00,Beauty & Personal Care
+Dabur T/paste Mint and lemon 150g,KSh 280.00,Beauty & Personal Care
+Dettol Antiseptic Disinfectant 1l,"KSh 2,400.00",Beauty & Personal Care
+Dettol Antiseptic Disinfectant 500ml,"KSh 1,450.00",Beauty & Personal Care
+Dettol cool soap 175g 4 pack,"KSh 1,250.00",Beauty & Personal Care
+Dettol eventone soap 175g 4 pack,"KSh 1,200.00",Beauty & Personal Care
+Dettol herbal soap 4 pack,"KSh 1,250.00",Beauty & Personal Care
+Dettol skincare soap 175g 4 pack,"KSh 1,250.00",Beauty & Personal Care
+Dove conditioner daily care 400ml,KSh 750.00,Beauty & Personal Care
+Dove lotion essential care 400ml,KSh 750.00,Beauty & Personal Care
+Dove lotion intense care 400ml,KSh 750.00,Beauty & Personal Care
+Dove lotion invigorating care 400ml,KSh 750.00,Beauty & Personal Care
+Dove lotion light care 400ml,KSh 750.00,Beauty & Personal Care
+Dove lotion pampering care 400ml,KSh 750.00,Beauty & Personal Care
+Dove lotion restoring care 400ml,KSh 750.00,Beauty & Personal Care
+Dove Shampoo intensive care 400ml,KSh 750.00,Beauty & Personal Care
+Dove Shower gel 500ml,"KSh 1,100.00",Beauty & Personal Care
+Downy Luxury perfume 880ml,KSh 750.00,Beauty & Personal Care
+FOGG Master Oak BODY SPRAY 120Ml,KSh 600.00,Beauty & Personal Care
+FOGG MONARCH BODY SPRAY 120ML,KSh 600.00,Beauty & Personal Care
+Glysolid body lotion 250ml,KSh 530.00,Beauty & Personal Care
+Glysolid cream 100ml,KSh 330.00,Beauty & Personal Care
+Glysolid cream 250ml,KSh 600.00,Beauty & Personal Care
+Gx Glass Cleaner 500ml,KSh 200.00,Beauty & Personal Care
+Hanan ear buds,KSh 100.00,Beauty & Personal Care
+Hanan facial tissue,KSh 200.00,Beauty & Personal Care
+Hanan pocket tissue,KSh 150.00,Beauty & Personal Care
+Hanan tissue pc,KSh 50.00,Beauty & Personal Care
+Hanan wipes blue,KSh 180.00,Beauty & Personal Care
+Hobby Conditioner 625ml,KSh 400.00,Beauty & Personal Care
+Hobby lotion 500ml,KSh 350.00,Beauty & Personal Care
+Hobby shampoo 625ml,KSh 450.00,Beauty & Personal Care
+Imperial leather lotion 400ml,KSh 400.00,Beauty & Personal Care
+Imperial leather soap 175g,KSh 120.00,Beauty & Personal Care
+Imperial leather soap 3 pack 175g,KSh 390.00,Beauty & Personal Care
+Kortex pads,KSh 120.00,Beauty & Personal Care
+Mortein doom 300ml,"KSh 1,200.00",Beauty & Personal Care
+Mortein doom 600ml,"KSh 1,700.00",Beauty & Personal Care
+Pampers Diaper Jumbo No. 4,"KSh 1,800.00",Beauty & Personal Care
+Pampers Diaper Jumbo No. 5,"KSh 1,800.00",Beauty & Personal Care
+Pampers Diaper Jumbo No. 6,"KSh 1,800.00",Beauty & Personal Care
+Pampers Diaper Jumbo No. 7,"KSh 1,800.00",Beauty & Personal Care
+Pampers Pants Jumbo No. 4,"KSh 1,800.00",Beauty & Personal Care
+Pampers pants Jumbo No. 5,"KSh 1,800.00",Beauty & Personal Care
+Pampers pants jumbo No. 6,"KSh 1,800.00",Beauty & Personal Care
+Pampers Pants Jumbo No. 7,"KSh 1,800.00",Beauty & Personal Care
+Papaya hand and body lotion 600ml,KSh 800.00,Beauty & Personal Care
+Pepsodent toothpaste 150g,KSh 170.00,Beauty & Personal Care
+Persil machine wash lavender 1l,KSh 850.00,Beauty & Personal Care
+Persil machine wash rose 1l,KSh 850.00,Beauty & Personal Care
+Pretty Be Body wash – All Flavours,KSh 850.00,Beauty & Personal Care
+Rexona 25ml,KSh 350.00,Beauty & Personal Care
+Rexona 50ml,KSh 500.00,Beauty & Personal Care
+Sifa serviettes 100 sheets,KSh 120.00,Beauty & Personal Care
+Sifa tissue jumbo roll,KSh 150.00,Beauty & Personal Care
+Softcare Baby Diapers Large 40pcs,KSh 750.00,Beauty & Personal Care
+Softcare Baby diapers Medium 42pcs,KSh 750.00,Beauty & Personal Care
+Softcare Baby Diapers XL 36pcs,KSh 750.00,Beauty & Personal Care
+Softcare Baby wipes 80pcs,KSh 180.00,Beauty & Personal Care
+Softcare pads,KSh 100.00,Beauty & Personal Care
+SoSoft Baby 2.5l,KSh 700.00,Beauty & Personal Care
+SoSoft Luxury 5l,"KSh 1,200.00",Beauty & Personal Care
+SoSoft pure care 2.5l,KSh 700.00,Beauty & Personal Care
+SoSoft Vanilla 2.5l,KSh 700.00,Beauty & Personal Care
+Treseme Conditioner 600ml,KSh 800.00,Beauty & Personal Care
+Treseme Shampoo 600ml,KSh 800.00,Beauty & Personal Care
+Valon Jelly perfumed 250g,KSh 250.00,Beauty & Personal Care
+Valon Jelly perfumed 500g,KSh 450.00,Beauty & Personal Care
+Valon Jelly pure 250g,KSh 250.00,Beauty & Personal Care
+Valon Jelly Pure 500g,KSh 450.00,Beauty & Personal Care
+Valon lotion 400ml,KSh 350.00,Beauty & Personal Care
+Vaseline men petroleum jelly 45g,KSh 100.00,Beauty & Personal Care
+Vaseline men petroleum jelly 95g,KSh 150.00,Beauty & Personal Care
+Vaseline Petroleum Jelly 100g,KSh 240.00,Beauty & Personal Care
+Vaseline petroleum jelly 100g,KSh 130.00,Beauty & Personal Care
+Vaseline petroleum jelly 50g,KSh 100.00,Beauty & Personal Care
+Softcare Baby diapers Small 48pc,KSh 750.00,Beauty & Personal Care

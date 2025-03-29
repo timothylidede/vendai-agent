@@ -1,0 +1,74 @@
+Product Name,Price,Category
+American classic mayonnaise 473ml,KSh 350.00,Sauces & Spices
+American Garden Tomato Ketchup,KSh 400.00,Sauces & Spices
+American Yellow mustard 227g,KSh 270.00,Sauces & Spices
+Bread crumbs 500g,KSh 300.00,Sauces & Spices
+Brookside ghee 1kg,"KSh 1,100.00",Sauces & Spices
+Brookside ghee 500g,KSh 650.00,Sauces & Spices
+Dried Apricots,"KSh 3,200.00",Sauces & Spices
+Hazelnut Flavor Syrup,"KSh 1,650.00",Sauces & Spices
+Heinz ketchup 300g,KSh 350.00,Sauces & Spices
+Heinz ketchup 570g,KSh 650.00,Sauces & Spices
+Hilwa condensed milk 390g,KSh 280.00,Sauces & Spices
+Hilwa tuna fish 180g,KSh 250.00,Sauces & Spices
+Hilwa tuna fish 95g,KSh 170.00,Sauces & Spices
+Kenylon Githeri 420g,KSh 200.00,Sauces & Spices
+Kenylon tomato paste 900g,KSh 530.00,Sauces & Spices
+Nureen baked beans 400g,KSh 150.00,Sauces & Spices
+Nureengreen peas 400g,KSh 150.00,Sauces & Spices
+Omaar tuna fish 180g,KSh 250.00,Sauces & Spices
+Omaar tuna fish 95g,KSh 170.00,Sauces & Spices
+Peptang tomato ketchup 700g,KSh 300.00,Sauces & Spices
+Peptang tomato sauce 400g,KSh 150.00,Sauces & Spices
+Peptang tomato sauce 700g,KSh 200.00,Sauces & Spices
+Primo popcorn 285g,KSh 150.00,Sauces & Spices
+Primo tomato paste sachet box,KSh 400.00,Sauces & Spices
+Renzo chicken stock,KSh 280.00,Sauces & Spices
+Renzo chicken stock 1kg,KSh 500.00,Sauces & Spices
+Renzo food seasoning 500g,KSh 450.00,Sauces & Spices
+Royco powder chicken/beef 250g,KSh 160.00,Sauces & Spices
+Royco powder Chicken/beef 500g,KSh 260.00,Sauces & Spices
+Soy sauce dark 623ml,KSh 380.00,Sauces & Spices
+Top food Coriander,KSh 400.00,Sauces & Spices
+Top Food Desiccated Coconut,,Sauces & Spices
+Top Food Spanish Paprika,KSh 550.00,Sauces & Spices
+Top Food Turmeric Ground Spice,KSh 400.00,Sauces & Spices
+Tropical Heat Beef masala 100g,KSh 150.00,Sauces & Spices
+Tropical Heat Black pepper 100g,KSh 330.00,Sauces & Spices
+Tropical Heat Cardamoms 100g,KSh 450.00,Sauces & Spices
+Tropical Heat Cayenne Pepper 100g,KSh 180.00,Sauces & Spices
+Tropical heat Chicken masala 100g,KSh 150.00,Sauces & Spices
+Tropical Heat Chili Flakes 100g,KSh 150.00,Sauces & Spices
+Tropical Heat Chilies 100g,KSh 150.00,Sauces & Spices
+Tropical Heat Cinnamon 100g,KSh 230.00,Sauces & Spices
+Tropical Heat Citric Acid 100g,KSh 150.00,Sauces & Spices
+Tropical Heat Coriander 100g,KSh 200.00,Sauces & Spices
+Tropical Heat Cumin 100g,KSh 350.00,Sauces & Spices
+Tropical Heat Curry powder 100g,KSh 180.00,Sauces & Spices
+Tropical Heat Dhana Jeera 100g,KSh 230.00,Sauces & Spices
+Tropical Heat Fish masala 100g,KSh 150.00,Sauces & Spices
+Tropical Heat Garam Masala 100g,KSh 280.00,Sauces & Spices
+Tropical Heat Garlic Powder 100g,KSh 250.00,Sauces & Spices
+Tropical Heat Ginger 100g,KSh 280.00,Sauces & Spices
+Tropical Heat Meat Tenderizer 100g,KSh 220.00,Sauces & Spices
+Tropical Heat Mixed spices 100g,KSh 230.00,Sauces & Spices
+Tropical Heat Paprika 100g,KSh 200.00,Sauces & Spices
+Tropical Heat Pilau masala 100g,KSh 330.00,Sauces & Spices
+Tropical Heat Tea masala 100g,KSh 240.00,Sauces & Spices
+Tropical Heat Turmeric 100g,KSh 170.00,Sauces & Spices
+Tropical Heat White pepper 100g,KSh 400.00,Sauces & Spices
+Virginia classic mayonnaise 946ml,KSh 600.00,Sauces & Spices
+Virginia coconut milk 400ml,KSh 250.00,Sauces & Spices
+Virginia Evaporated milk 400g,KSh 250.00,Sauces & Spices
+Virginia mushroom 400g,KSh 230.00,Sauces & Spices
+Virginia Oyster sauce 685g,KSh 380.00,Sauces & Spices
+Virginia Oyster sauce 685ml,KSh 430.00,Sauces & Spices
+Virginia pitted black olive 350g,KSh 330.00,Sauces & Spices
+Virginia pitted green olives 350g,KSh 330.00,Sauces & Spices
+Virginia Sesame oil 750ml,"KSh 1,100.00",Sauces & Spices
+Virginia sweet chilli 710g,KSh 450.00,Sauces & Spices
+Whole Dil Pickles,KSh 350.00,Sauces & Spices
+Yellow mustard 227g,KSh 270.00,Sauces & Spices
+Zesta vinegar 5l,KSh 350.00,Sauces & Spices
+Zesta Vinegar 700ml,KSh 100.00,Sauces & Spices
+Tropical Heat Cloves 100g,KSh 430.00,Sauces & Spices
