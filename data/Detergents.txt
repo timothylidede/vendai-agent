@@ -1,3 +1,5 @@
+The following is the list of products available under detergents
+
 Product Name,Price,Category
 Dettol antibacterial liquid hand wash 400ml,KSh 740.00,Detergents
 Eripride scouring powder 1kg,KSh 150.00,Detergents

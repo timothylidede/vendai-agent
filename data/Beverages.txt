@@ -1,3 +1,5 @@
+The following is the list of products available under beverages
+
 Product Name,Price,Category
 Aqua clear water 500ml*12pc,KSh 500.00,Beverages
 Aquamist water 18.5l,KSh 700.00,Beverages

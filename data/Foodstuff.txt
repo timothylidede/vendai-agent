@@ -1,3 +1,5 @@
+The following is the list of products available under foodstuff
+
 Product Name,Price,Category
 Ajab All purpose Flour 1kg*24pc,"KSh 2,200.00",Foodstuff
 Ajab All Purpose Flour 2kg,KSh 180.00,Foodstuff

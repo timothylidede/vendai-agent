@@ -1,3 +1,5 @@
+The following is the list of products available under Gas Cylinders
+
 Product Name,Price,Category
 AfriGas 13kg Gas Refill,"KSh 2,800.00",Gas Cylinders
 AfriGas 6kg Gas Refill,"KSh 1,300.00",Gas Cylinders

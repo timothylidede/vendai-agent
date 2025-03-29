@@ -3,10 +3,30 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const csv = require('csv-parser');
 const fs = require('fs');
 const axios = require('axios');
+import { OpenAI } from "openai";
+import { systemPrompt } from "./systemPrompt";
+// const openai = new OpenAI();
 
 // Configuration
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const DEEPSEEK_BASE_URL = process.env.DEEPSEEK_BASE_URL;
 const ADMIN_NUMBER = '254795536131';
+
+const openai = new OpenAI({
+    baseURL: DEEPSEEK_BASE_URL,
+    apiKey: DEEPSEEK_API_KEY
+});
+
+async function getResponseFromDeepSeek(userQuery) {
+
+    const completion = await openai.chat.completions.create({
+        messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userQuery }],
+        model: "deepseek-chat",
+      });
+    
+      console.log(completion.choices[0].message.content);
+    
+}
 
 // Enhanced Inventory Management
 class InventoryManager {
@@ -154,6 +174,12 @@ async function analyzeMessage(userInput, session) {
     }
 }
 
+
+
+
+// async function getResponseFromDeepSeek(userInput) {
+//     openai.chat.create({
+
 // WhatsApp Bot Manager
 class WhatsAppBot {
     constructor() {
@@ -188,52 +214,13 @@ class WhatsAppBot {
         const session = this.userSessions.get(userNumber);
 
         // Advanced AI-powered message analysis
-        const aiAnalysis = await analyzeMessage(userInput, session);
-        if (!aiAnalysis) {
-            return msg.reply("I'm experiencing some technical difficulties. Could you please try again?");
-        }
+        // const aiAnalysis = await analyzeMessage(userInput, session);
+
+        
+
 
         // Intelligent response routing
-        switch (aiAnalysis.intent) {
-            case "greeting":
-                msg.reply(`Hello ${displayName}! How can I help you find the perfect products today?`);
-                break;
-
-            case "product_inquiry":
-                const searchContext = aiAnalysis.context || {};
-                const matchedProducts = this.inventoryManager.findProducts(userInput, searchContext);
-                
-                if (matchedProducts.length > 0) {
-                    session.matches = matchedProducts;
-                    session.stage = 'product_selection';
-                    session.lastInquiry = { input: userInput, context: searchContext };
-
-                    const productList = this.formatProducts(matchedProducts);
-                    msg.reply(`I found some great matches:\n\n${productList}\n\nReply with a number (1-${matchedProducts.length}) to add to cart or say 'more details'.`);
-                } else {
-                    msg.reply("I couldn't find any products matching your description. Would you like to try a different search?");
-                }
-                break;
-
-            case "cart_management":
-                // Implement cart-specific logic
-                break;
-
-            case "recommendation":
-                const recommendations = this.inventoryManager.getRecommendations(session.cart, session.conversationContext);
-                if (recommendations.length > 0) {
-                    const recommendList = this.formatProducts(recommendations);
-                    msg.reply(`Based on your current cart, I recommend:\n\n${recommendList}`);
-                }
-                break;
-
-            case "question":
-                msg.reply(aiAnalysis.response || "Great question! How can I provide more clarity?");
-                break;
-
-            default:
-                msg.reply("I'm not quite sure how to help. Could you rephrase or be more specific?");
-        }
+        
     }
 
     formatProducts(products) {

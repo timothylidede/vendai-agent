@@ -1,3 +1,5 @@
+The following is the list of products available under beauty and personal care
+
 Product Name,Price,Category
 Always ultra thick blue,KSh 120.00,Beauty & Personal Care
 Amara lotion 400ml,KSh 300.00,Beauty & Personal Care

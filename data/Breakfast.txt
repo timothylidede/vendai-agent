@@ -1,3 +1,5 @@
+The following is the list of products available under breakfast and cereals
+
 Product Name,Price,Category
 American honey,"KSh 1,200.00",Breakfast
 Blue band 1kg,KSh 490.00,Breakfast

@@ -1,3 +1,5 @@
+The following is the list of products available under Sauces & Spices
+
 Product Name,Price,Category
 American classic mayonnaise 473ml,KSh 350.00,Sauces & Spices
 American Garden Tomato Ketchup,KSh 400.00,Sauces & Spices

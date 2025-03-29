@@ -1,3 +1,5 @@
+The following is the list of products available under grocery
+
 Product Name,Price,Category
 Avocado,KSh 20.00,Grocery
 Banana sack,KSh 100.00,Grocery
