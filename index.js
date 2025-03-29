@@ -21,6 +21,8 @@ const openai = new OpenAI({
     apiKey: DEEPSEEK_API_KEY
 });
 
+let communicationhistoryList = [{"role":" ", "content":" "}];
+
 // console.log('OpenAI Config:', openai.baseURL, openai.apiKey);
 console.log('OpenAI API Initialized with deepseek creds...');
 
@@ -30,7 +32,7 @@ async function getResponseFromDeepSeek(userQuery) {
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userQuery }],
         model: "deepseek-chat",
     });
-    console.log('DeepSeek Response:', completion.choices[0].message.content); // Debug
+    // console.log('DeepSeek Response:', completion.choices[0].message.content); // Debug
     return completion.choices[0].message.content;
 }
 
@@ -120,52 +122,6 @@ class InventoryManager {
     }
 }
 
-async function analyzeMessage(userInput, session) {
-    try {
-        const response = await axios.post(
-            'https://api.deepseek.com/v1/chat/completions',
-            {
-                model: "deepseek-chat",
-                messages: [
-                    {
-                        role: "system",
-                        content: `Advanced message analysis with rich context:
-                        - Analyze user's intent with deep context awareness
-                        - Current cart: ${JSON.stringify(session.cart)}
-                        - Previous interactions: ${JSON.stringify(session.lastInquiry)}
-                        - Detect nuanced intents like price range, product category, specific requirements
-                        Respond with enriched JSON: { 
-                            "intent": "greeting" | "product_inquiry" | "cart_management" | "recommendation" | "question",
-                            "context": {
-                                "category": "optional category",
-                                "priceRange": {"min": number, "max": number},
-                                "additionalDetails": "any specific user requirements"
-                            },
-                            "response": "natural language contextual reply"
-                        }`
-                    },
-                    { role: "user", content: userInput }
-                ],
-                temperature: 0.4
-            },
-            {
-                headers: {
-                    'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-
-        let content = response.data.choices[0].message.content;
-        if (content.startsWith('```json') && content.endsWith('```')) {
-            content = content.slice(7, -3).trim();
-        }
-        return JSON.parse(content);
-    } catch (error) {
-        console.error('AI Analysis Error:', error);
-        return null;
-    }
-}
 
 class WhatsAppBot {
     constructor() {
@@ -181,6 +137,9 @@ class WhatsAppBot {
     }
 
     async handleMessage(msg) {
+        
+        // Basic conversion
+        const commsHistoryString = JSON.stringify(communicationhistoryList);
         const userNumber = msg.from;
         console.log('Message from:', userNumber, msg.body);
         const contact = await this.client.getContactById(userNumber);
@@ -199,16 +158,17 @@ class WhatsAppBot {
         const session = this.userSessions.get(userNumber);
         console.log('Just before new code stuff');
         const context = await getContext(userInput);
+        communicationhistoryList.push({"role":"user", "content":userInput});
         console.log('Context has been found:', context);
         // const query = userInput + " with this context " + context;
         const query = `Use the below context material to answer the subsequent question. If the answer cannot be found, write "I don't know."
 
-                context: ${context + systemPrompt}
-
+                context: ${context + systemPrompt + commsHistoryString}
                 Question:` + userInput;
 
         const response = await getResponseFromDeepSeek(query);
         console.log('Response from DeepSeek:', response);
+        communicationhistoryList.push({"role":"system", "content":response});
         msg.reply(response);
     }
 
