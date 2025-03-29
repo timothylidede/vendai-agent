@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import pkg from 'whatsapp-web.js'; // Import as default
-const { Client, LocalAuth } = pkg; // Destructure from default export
+import pkg from 'whatsapp-web.js';
+const { Client, LocalAuth } = pkg;
 import csv from 'csv-parser';
 import fs from 'node:fs';
 import axios from 'axios';
@@ -8,27 +8,33 @@ import { OpenAI } from 'openai';
 import { systemPrompt } from './systemPrompt.js';
 import { getContext } from './context.js';
 
-// Configuration
+// Log environment variables
+console.log('DEEPSEEK_API_KEY:', process.env.DEEPSEEK_API_KEY);
+// console.log('DEEPSEEK_BASE_URL:', process.env.DEEPSEEK_BASE_URL);
+
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 const DEEPSEEK_BASE_URL = process.env.DEEPSEEK_BASE_URL;
 const ADMIN_NUMBER = '254795536131';
 
 const openai = new OpenAI({
-    baseURL: DEEPSEEK_BASE_URL,
+    baseURL: 'https://api.deepseek.com/v1',
     apiKey: DEEPSEEK_API_KEY
 });
 
+// console.log('OpenAI Config:', openai.baseURL, openai.apiKey);
 console.log('OpenAI API Initialized with deepseek creds...');
 
 async function getResponseFromDeepSeek(userQuery) {
+    console.log('Sending query to DeepSeek:', userQuery); // Debug
     const completion = await openai.chat.completions.create({
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userQuery }],
         model: "deepseek-chat",
     });
+    console.log('DeepSeek Response:', completion.choices[0].message.content); // Debug
     return completion.choices[0].message.content;
 }
 
-// Enhanced Inventory Management
+// Rest of your code remains unchanged...
 class InventoryManager {
     constructor() {
         this.products = [];
@@ -114,7 +120,6 @@ class InventoryManager {
     }
 }
 
-// Enhanced AI Analysis
 async function analyzeMessage(userInput, session) {
     try {
         const response = await axios.post(
@@ -162,7 +167,6 @@ async function analyzeMessage(userInput, session) {
     }
 }
 
-// WhatsApp Bot Manager
 class WhatsAppBot {
     constructor() {
         this.inventoryManager = new InventoryManager();
@@ -193,12 +197,18 @@ class WhatsAppBot {
             });
         }
         const session = this.userSessions.get(userNumber);
-        console.log('JUst before new code stuff ');
+        console.log('Just before new code stuff');
         const context = await getContext(userInput);
-        console.log('Context has been found:');
-        const query = userInput + " " + context;
+        console.log('Context has been found:', context);
+        // const query = userInput + " with this context " + context;
+        const query = `Use the below context material to answer the subsequent question. If the answer cannot be found, write "I don't know."
+
+                context: ${context + systemPrompt}
+
+                Question:` + userInput;
+
         const response = await getResponseFromDeepSeek(query);
-        console.log('Response from deepseek:', response);
+        console.log('Response from DeepSeek:', response);
         msg.reply(response);
     }
 
@@ -209,6 +219,5 @@ class WhatsAppBot {
     }
 }
 
-// Initialize and start the bot
 const whatsAppBot = new WhatsAppBot();
 console.log('Advanced WhatsApp Product Suggestion Bot Started...');
