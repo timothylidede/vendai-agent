@@ -1,0 +1,47 @@
+Product Name,Price,Category
+American honey,"KSh 1,200.00",Breakfast
+Blue band 1kg,KSh 490.00,Breakfast
+Blue band 250g,KSh 170.00,Breakfast
+Blue band 500g,KSh 250.00,Breakfast
+Cerelac 400g,KSh 900.00,Breakfast
+Choco primo jar 200g,KSh 200.00,Breakfast
+Chocolate Syrup 624ml,KSh 450.00,Breakfast
+Cudbury Cocoa powder 200g,KSh 400.00,Breakfast
+Cudbury drinking chocolate 450g,KSh 600.00,Breakfast
+Drinking chocolate 225g,KSh 290.00,Breakfast
+Eggs crate,KSh 500.00,Breakfast
+Hilwa oats 1kg,KSh 350.00,Breakfast
+Kellogg’s Cornflakes 500g,KSh 800.00,Breakfast
+Kellogg’s Cornflakes 750g,"KSh 1,340.00",Breakfast
+Kericho gold jar 500g,KSh 430.00,Breakfast
+Kericho gold loose 1kg,KSh 790.00,Breakfast
+Kericho gold loose 250g,KSh 212.00,Breakfast
+Kericho gold loose 500g,KSh 400.00,Breakfast
+Kericho gold tea bags 100pcs,KSh 300.00,Breakfast
+Kericho gold tea bags 50pcs,KSh 200.00,Breakfast
+Maple Syrup 325ml,KSh 600.00,Breakfast
+Melvins masala 250g,KSh 150.00,Breakfast
+Melvins Tangawizi 250g,KSh 150.00,Breakfast
+Melvins Tangawizi 500g,KSh 300.00,Breakfast
+Milo 400g,KSh 950.00,Breakfast
+Msafi bar soap 200g,KSh 50.00,Breakfast
+Nasri Family porridge,KSh 500.00,Breakfast
+Natural Honey,KSh 900.00,Breakfast
+Nestle Cerelac,KSh 900.00,Breakfast
+Nut gold peanut butter 500g,KSh 330.00,Breakfast
+Nut gold peanut butter 800g,KSh 650.00,Breakfast
+Nutella Chocolate 340g,KSh 700.00,Breakfast
+Nutella Chocolate 750g,"KSh 1,400.00",Breakfast
+Pancake syrup 710ml,KSh 550.00,Breakfast
+Plain Bread Crumbs,KSh 400.00,Breakfast
+Prestige 1kg,KSh 320.00,Breakfast
+Prestige 500g,KSh 250.00,Breakfast
+Raha drinking chocolate 400g,KSh 450.00,Breakfast
+Strawberry Syrup 624ml,KSh 400.00,Breakfast
+Virginia honey 1kg,KSh 750.00,Breakfast
+Virginia honey 500g,KSh 450.00,Breakfast
+Weetabix 450g,KSh 400.00,Breakfast
+Zesta jam 1kg,KSh 450.00,Breakfast
+Zesta jam 500gms,KSh 300.00,Breakfast
+Zesta peanut butter 400g,KSh 293.00,Breakfast
+Zesta peanut butter 800g,KSh 520.00,Breakfast

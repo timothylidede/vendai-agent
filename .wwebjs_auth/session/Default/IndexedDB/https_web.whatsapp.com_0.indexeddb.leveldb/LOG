@@ -1,13 +1,11 @@
-2025/03/27-01:52:04.055 b2dc Reusing MANIFEST C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/03/27-01:52:04.056 b2dc Recovering log #77
-2025/03/27-01:52:04.091 b2dc Reusing old log C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000077.log 
-2025/03/27-01:52:05.860 b530 Level-0 table #82: started
-2025/03/27-01:52:05.875 b530 Level-0 table #82: 387712 bytes OK
-2025/03/27-01:52:05.879 b530 Delete type=0 #77
-2025/03/27-01:52:05.879 b530 Manual compaction at level-0 from '\x00%\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00&\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/03/27-01:52:07.832 b530 Compacting 1@1 + 1@2 files
-2025/03/27-01:52:07.920 b530 Generated table #83@1: 43130 keys, 1688134 bytes
-2025/03/27-01:52:07.920 b530 Compacted 1@1 + 1@2 files => 1688134 bytes
-2025/03/27-01:52:07.923 b530 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/03/27-01:52:07.924 b530 Delete type=2 #79
-2025/03/27-01:52:07.924 b530 Delete type=2 #82
+2025/03/28-12:19:42.112 3be6 Reusing MANIFEST /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/03/28-12:19:42.112 3be6 Recovering log #81
+2025/03/28-12:19:42.177 3be6 Reusing old log /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000081.log 
+2025/03/28-12:19:48.352 3bd3 Level-0 table #86: started
+2025/03/28-12:19:48.390 3bd3 Level-0 table #86: 554179 bytes OK
+2025/03/28-12:19:48.395 3bd3 Delete type=0 #81
+2025/03/28-12:19:48.396 3bd3 Manual compaction at level-0 from '\x00&\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00'\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/03/28-12:19:52.288 3bcc Compacting 1@1 + 1@2 files
+2025/03/28-12:19:52.496 3bcc Generated table #87@1: 45228 keys, 1757757 bytes
+2025/03/28-12:19:52.496 3bcc Compacted 1@1 + 1@2 files => 1757757 bytes
+2025/03/28-12:19:52.503 3bcc compacted to: files[ 0 0 1 0 0 0 0 ]

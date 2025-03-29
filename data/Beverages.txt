@@ -1,0 +1,32 @@
+Product Name,Price,Category
+Aqua clear water 500ml*12pc,KSh 500.00,Beverages
+Aquamist water 18.5l,KSh 700.00,Beverages
+Brookside Dairy best milk 500ml*12pc,KSh 800.00,Beverages
+Brookside lala natural 500ml,KSh 120.00,Beverages
+Brookside lala sweatened 500ml,KSh 120.00,Beverages
+Daima milk 500ml*18pc,"KSh 1,000.00",Beverages
+Daima milk drink 250ml*6pcs,KSh 400.00,Beverages
+Daima milk drink vanilla 500ml*12pc,"KSh 1,200.00",Beverages
+Dasani water 500ml*12pc,KSh 500.00,Beverages
+Delemere yoghurt 250ml,KSh 100.00,Beverages
+Delemere yoghurt 450ml,KSh 160.00,Beverages
+Foster Clark juice 2.5ml,"KSh 1,800.00",Beverages
+Gx dishwashing Liquid 5l,KSh 600.00,Beverages
+Kanz juice 2.5l,"KSh 1,300.00",Beverages
+Keringet 1l,KSh 130.00,Beverages
+Lucozade 1l,KSh 240.00,Beverages
+Pick n peel juice Apple 1l,KSh 240.00,Beverages
+Pick n peel juice passion 1l,KSh 300.00,Beverages
+Pick n peel juice red grape 1l,KSh 240.00,Beverages
+Play 500ml,KSh 70.00,Beverages
+Predator 500ml,KSh 70.00,Beverages
+Ribena 1l,KSh 240.00,Beverages
+Ribena concentrated juice 1l,KSh 700.00,Beverages
+Soda 2l,KSh 200.00,Beverages
+Soda 2l*6pcs,"KSh 1,200.00",Beverages
+Soda 350ml pc,KSh 50.00,Beverages
+Soda 350ml*24pc,"KSh 1,100.00",Beverages
+Soda 500ml pc,KSh 70.00,Beverages
+Soda 500ml*24pc,"KSh 1,600.00",Beverages
+Vimto juice 680ml,KSh 480.00,Beverages
+Monster energy drink 500ml,KSh 250.00,Beverages

@@ -1,0 +1,41 @@
+Product Name,Price,Category
+Dettol antibacterial liquid hand wash 400ml,KSh 740.00,Detergents
+Eripride scouring powder 1kg,KSh 150.00,Detergents
+Eripride scouring powder 500G,KSh 80.00,Detergents
+Eripride toilet cleaner 750ml,KSh 400.00,Detergents
+Fasclean 5kg,"KSh 1,700.00",Detergents
+Gx bleach regular 500ml,KSh 150.00,Detergents
+Gx bleach white 1l,KSh 250.00,Detergents
+Gx bleach white 5l,KSh 800.00,Detergents
+Gx colored bleach 1l,KSh 300.00,Detergents
+Gx Dishwashing liquid 5L,KSh 700.00,Detergents
+Gx Hand wash 500ml,KSh 150.00,Detergents
+Gx multipurpose Liquid Detergent 5l,KSh 650.00,Detergents
+Gx oven cleaner 500ml,KSh 300.00,Detergents
+Gx scouring Powder 1Kg,KSh 150.00,Detergents
+Gx scouring Powder 500g,KSh 80.00,Detergents
+Gx stain Remover 750ml,KSh 400.00,Detergents
+Gx tile cleaner 1l,KSh 300.00,Detergents
+Gx Tile cleaner 5l,KSh 800.00,Detergents
+Hobby liquid hand wash 500ml,KSh 170.00,Detergents
+Jamaa bar soap 800g,KSh 180.00,Detergents
+Jik Bleach Regular 5l,"KSh 1,400.00",Detergents
+Menengai bar soap 800g,KSh 170.00,Detergents
+Morning fresh Dishwashing Paste combined super concentrate 800gMS,KSh 390.00,Detergents
+Morning fresh liquid 750ml,KSh 350.00,Detergents
+Morning fresh paste 400g,KSh 230.00,Detergents
+Morning fresh paste 800g,KSh 380.00,Detergents
+Msafi bar soap 700g,KSh 150.00,Detergents
+Ngarisha Mesh Scrubber,KSh 100.00,Detergents
+Persil liquid detergent 3l,"KSh 2,380.00",Detergents
+Persil machine wash detergent powder 750gms,KSh 400.00,Detergents
+Persil synthetic detergent powder 400G,KSh 270.00,Detergents
+Pride dishwashing paste 800gms,KSh 390.00,Detergents
+Pride Multipurpose detergents 20l,"KSh 3,200.00",Detergents
+Pride Multipurpose detergents 5l,KSh 850.00,Detergents
+Pride paste 800g,KSh 380.00,Detergents
+Pride scouring Powder 500G,KSh 100.00,Detergents
+Temmis Handwash 500ml,KSh 150.00,Detergents
+Ultra clean sponge cloth,KSh 160.00,Detergents
+White wash bar soap 200g,KSh 50.00,Detergents
+Zelia Hand wash Liquid 500ml,KSh 150.00,Detergents

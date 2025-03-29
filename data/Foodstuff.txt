@@ -1,0 +1,76 @@
+Product Name,Price,Category
+Ajab All purpose Flour 1kg*24pc,"KSh 2,200.00",Foodstuff
+Ajab All Purpose Flour 2kg,KSh 180.00,Foodstuff
+Aptamil milk powder 0-6 month 800G,"KSh 3,300.00",Foodstuff
+Aptamil milk powder 12+ months 800G,"KSh 3,300.00",Foodstuff
+Aptamil milk powder 6-12 month 800G,"KSh 3,300.00",Foodstuff
+Axe chapati flour 2kg,KSh 190.00,Foodstuff
+Axe chapati flour 2kg 12pc,"KSh 2,200.00",Foodstuff
+Bahari vegetable oil 10l,"KSh 2,650.00",Foodstuff
+Bahari vegetable oil 1l,KSh 330.00,Foodstuff
+Bahari vegetable oil 5l,"KSh 1,600.00",Foodstuff
+Brookside milk powder 2.5kg,"KSh 2,700.00",Foodstuff
+Brookside milk powder 900g,"KSh 1,250.00",Foodstuff
+Daawat basmati Rice 5kg,"KSh 1,600.00",Foodstuff
+Elianto corn oil 10l,"KSh 4,400.00",Foodstuff
+Elianto Corn Oil 3l,"KSh 1,550.00",Foodstuff
+Elianto Corn Oil 5l,"KSh 2,500.00",Foodstuff
+Exe all purpose Flour 2kg,KSh 200.00,Foodstuff
+Exe All purpose Flour 2kg*12pc,"KSh 2,300.00",Foodstuff
+Exe Atta Mark Wheat Flour 2kg,KSh 200.00,Foodstuff
+Exe Atta Mark Wheat Flour 2kg 12pc,"KSh 2,300.00",Foodstuff
+Exe Self Raising Flour 2kg,KSh 190.00,Foodstuff
+Exe Self Raising Flour 2kg 12pc,"KSh 2,300.00",Foodstuff
+Family Basmati Rice 10kg,"KSh 2,600.00",Foodstuff
+Family Basmati Rice 5Kg,"KSh 1,300.00",Foodstuff
+Fresh fry cooking oil 10l,"KSh 2,650.00",Foodstuff
+Fresh Fry cooking oil 1l,KSh 350.00,Foodstuff
+Fresh fry cooking oil 2l,KSh 750.00,Foodstuff
+Fresh Fry cooking oil 3l,KSh 900.00,Foodstuff
+Golden fry cooking oil 3l,KSh 900.00,Foodstuff
+Golden fry cooking oil 5l,"KSh 1,600.00",Foodstuff
+Green grams 1kg,KSh 190.00,Foodstuff
+Green lentils kamande 1kg,KSh 450.00,Foodstuff
+Hilwa powder milk 2.5kg,"KSh 3,300.00",Foodstuff
+Jogoo Maize meal 2kg*12pc,"KSh 1,800.00",Foodstuff
+Kabras sugar 1kg,KSh 165.00,Foodstuff
+Kabras sugar 2kg,KSh 320.00,Foodstuff
+Lato milk powder 2.5kg,"KSh 2,800.00",Foodstuff
+Mahmood Basmati rice 10kg,"KSh 2,600.00",Foodstuff
+Mahmood Basmati rice 25kg,"KSh 6,200.00",Foodstuff
+Mahmood Basmati rice 5kg,"KSh 1,350.00",Foodstuff
+Mandazi Wheat flour 2kg,KSh 190.00,Foodstuff
+Mandazi Wheat flour 2kg 12pc,"KSh 2,300.00",Foodstuff
+NAN 1 Opti pro Baby Milk,,Foodstuff
+Nura Basmati rice 10kg,"KSh 2,650.00",Foodstuff
+Nura Basmati rice 1kg,KSh 280.00,Foodstuff
+Nura Basmati Rice 25kg,"KSh 6,200.00",Foodstuff
+Nura Basmati rice 5kg,"KSh 1,350.00",Foodstuff
+Nura Powder milk 2.5kg,"KSh 3,500.00",Foodstuff
+Nyota Vegetable oil 10l,"KSh 2,650.00",Foodstuff
+Nyota Vegetable oil 20l,"KSh 5,100.00",Foodstuff
+Pearl Pishori Rice 5kg,"KSh 1,500.00",Foodstuff
+Pembe Wheat Flour 1kg,KSh 100.00,Foodstuff
+Pembe Wheat Flour 1kg*24pc,"KSh 2,100.00",Foodstuff
+Pembe Wheat Flour 2kg,KSh 200.00,Foodstuff
+Pembe Wheat Flour 2kg*12pc,"KSh 2,100.00",Foodstuff
+Pika Vegetable Cooking oil 10l,"KSh 2,600.00",Foodstuff
+Pika Vegetable Cooking oil 5l,"KSh 1,300.00",Foodstuff
+Postman Cooking oil 20l,"KSh 5,100.00",Foodstuff
+Raha Premium Ugali 2kg,KSh 220.00,Foodstuff
+Raha Premium Ugali 2kg*12pc,"KSh 2,400.00",Foodstuff
+Rina 1L Vegetable Cooking Oil,KSh 350.00,Foodstuff
+Rina 20L Vegetable Cooking Oil,"KSh 5,700.00",Foodstuff
+Rina Vegetable Cooking Oil 2l,KSh 680.00,Foodstuff
+Rina Vegetable Cooking Oil 3l,"KSh 1,000.00",Foodstuff
+Rina Vegetable Cooking Oil 3l,"KSh 1,700.00",Foodstuff
+Rinsun Sunflower oil 3l,"KSh 1,100.00",Foodstuff
+Rinsun Sunflower Oil 5l,"KSh 1,700.00",Foodstuff
+Soko Ugali maize flour 1kg,KSh 80.00,Foodstuff
+Soko Ugali maize flour 1kg*24pc,"KSh 1,700.00",Foodstuff
+Soko Ugali maize flour 2kg,KSh 150.00,Foodstuff
+Soko Ugali Maize Flour 2kg*12pc,"KSh 1,700.00",Foodstuff
+Sunrice Basmati Rice 5kg,"KSh 1,400.00",Foodstuff
+Yellow beans 1kg,KSh 280.00,Foodstuff
+Zahra rice 1kg,KSh 220.00,Foodstuff
+Zahra rice 25kg,"KSh 4,500.00",Foodstuff
