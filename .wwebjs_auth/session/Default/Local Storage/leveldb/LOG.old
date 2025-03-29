@@ -1,3 +1,3 @@
-2025/03/27-01:52:03.552 b4cc Reusing MANIFEST C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2025/03/27-01:52:03.556 b4cc Recovering log #4
-2025/03/27-01:52:03.558 b4cc Reusing old log C:\Users\lided\projects\vendai-chatbot\.wwebjs_auth\session\Default\Local Storage\leveldb/000004.log 
+2025/03/29-17:52:34.919 1d661 Reusing MANIFEST /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/03/29-17:52:34.919 1d661 Recovering log #8
+2025/03/29-17:52:34.921 1d661 Reusing old log /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/Local Storage/leveldb/000008.log 

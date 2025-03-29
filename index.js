@@ -1,12 +1,12 @@
-require('dotenv').config();
-const { Client, LocalAuth } = require('whatsapp-web.js');
-const csv = require('csv-parser');
-const fs = require('fs');
-const axios = require('axios');
-import { OpenAI } from "openai";
-import { systemPrompt } from "./systemPrompt";
-import {getContext} from "./context";
-// const openai = new OpenAI();
+import 'dotenv/config';
+import pkg from 'whatsapp-web.js'; // Import as default
+const { Client, LocalAuth } = pkg; // Destructure from default export
+import csv from 'csv-parser';
+import fs from 'node:fs';
+import axios from 'axios';
+import { OpenAI } from 'openai';
+import { systemPrompt } from './systemPrompt.js';
+import { getContext } from './context.js';
 
 // Configuration
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
@@ -18,15 +18,14 @@ const openai = new OpenAI({
     apiKey: DEEPSEEK_API_KEY
 });
 
-async function getResponseFromDeepSeek(userQuery) {
+console.log('OpenAI API Initialized with deepseek creds...');
 
+async function getResponseFromDeepSeek(userQuery) {
     const completion = await openai.chat.completions.create({
         messages: [{ role: "system", content: systemPrompt }, { role: "user", content: userQuery }],
         model: "deepseek-chat",
-      });
-    
-    //   console.log();
-    return completion.choices[0].message.content
+    });
+    return completion.choices[0].message.content;
 }
 
 // Enhanced Inventory Management
@@ -41,11 +40,9 @@ class InventoryManager {
         fs.createReadStream('one-stop-wholesalers.csv')
             .pipe(csv())
             .on('data', (data) => {
-                // Enhanced data processing
                 data.cleanPrice = parseFloat(data.Price.replace(/[^\d.]/g, ''));
                 data.keywords = this.extractKeywords(data['Product Name']);
                 
-                // Track unique categories
                 if (data.Category) {
                     this.categories.add(data.Category.toLowerCase().trim());
                 }
@@ -58,41 +55,34 @@ class InventoryManager {
             });
     }
 
-    // Advanced keyword extraction for better matching
     extractKeywords(productName) {
         return productName.toLowerCase()
             .split(/\s+/)
             .filter(word => word.length > 2 && !['the', 'and', 'with'].includes(word));
     }
 
-    // Advanced product search with multiple matching strategies
     findProducts(query, context = {}) {
         const lowercaseQuery = query.toLowerCase();
         
-        // Scoring-based matching
         const scoredProducts = this.products.map(product => {
             let score = 0;
             const productName = product['Product Name'].toLowerCase();
             const productKeywords = product.keywords;
 
-            // Exact name match
             if (productName === lowercaseQuery) score += 100;
             
-            // Keyword matches
             const queryWords = lowercaseQuery.split(/\s+/);
             queryWords.forEach(word => {
                 if (productKeywords.includes(word)) score += 50;
                 if (productName.includes(word)) score += 30;
             });
 
-            // Category match if context provided
             if (context.category && 
                 product.Category && 
                 product.Category.toLowerCase() === context.category.toLowerCase()) {
                 score += 75;
             }
 
-            // Price range consideration
             if (context.priceRange) {
                 const { min, max } = context.priceRange;
                 if (product.cleanPrice >= min && product.cleanPrice <= max) {
@@ -103,18 +93,15 @@ class InventoryManager {
             return { ...product, score };
         });
 
-        // Sort by score and filter top results
         return scoredProducts
             .filter(p => p.score > 0)
             .sort((a, b) => b.score - a.score)
             .slice(0, 5);
     }
 
-    // Generate smart product recommendations
     getRecommendations(currentCart, context) {
         if (currentCart.length === 0) return [];
 
-        // Find related products based on cart contents
         const cartCategories = [...new Set(currentCart.map(item => item.Category))];
         const recommendedProducts = this.products
             .filter(product => 
@@ -175,12 +162,6 @@ async function analyzeMessage(userInput, session) {
     }
 }
 
-
-
-
-// async function getResponseFromDeepSeek(userInput) {
-//     openai.chat.create({
-
 // WhatsApp Bot Manager
 class WhatsAppBot {
     constructor() {
@@ -195,14 +176,13 @@ class WhatsAppBot {
         this.client.initialize();
     }
 
-    // Comprehensive message handling
     async handleMessage(msg) {
         const userNumber = msg.from;
+        console.log('Message from:', userNumber, msg.body);
         const contact = await this.client.getContactById(userNumber);
         const displayName = contact.pushname || 'Customer';
         const userInput = msg.body.trim();
 
-        // Initialize or retrieve user session
         if (!this.userSessions.has(userNumber)) {
             this.userSessions.set(userNumber, {
                 name: displayName,
@@ -214,19 +194,12 @@ class WhatsAppBot {
         }
         const session = this.userSessions.get(userNumber);
 
-        // Advanced AI-powered message analysis
-        // const aiAnalysis = await analyzeMessage(userInput, session);
-
-        context = await getContext(userInput);
-        query = userInput + " " + context;
-        response = await getResponseFromDeepSeek(query);
-        
-
-        
-
-
-        // Intelligent response routing
-        
+        const context = await getContext(userInput);
+        console.log('Context has been found:');
+        const query = userInput + " " + context;
+        const response = await getResponseFromDeepSeek(query);
+        console.log('Response from deepseek:', response);
+        msg.reply(response);
     }
 
     formatProducts(products) {
