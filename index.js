@@ -193,7 +193,7 @@ class WhatsAppBot {
             });
         }
         const session = this.userSessions.get(userNumber);
-
+        console.log('JUst before new code stuff ');
         const context = await getContext(userInput);
         console.log('Context has been found:');
         const query = userInput + " " + context;

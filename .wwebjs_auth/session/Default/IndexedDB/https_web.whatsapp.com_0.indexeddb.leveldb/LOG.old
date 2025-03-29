@@ -1,13 +1,13 @@
-2025/03/29-17:52:35.411 1d662 Reusing MANIFEST /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/03/29-17:52:35.412 1d662 Recovering log #97
-2025/03/29-17:52:35.427 1d662 Reusing old log /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000097.log 
-2025/03/29-17:52:38.251 1d664 Level-0 table #102: started
-2025/03/29-17:52:38.290 1d664 Level-0 table #102: 147965 bytes OK
-2025/03/29-17:52:38.294 1d664 Delete type=0 #97
-2025/03/29-17:52:38.294 1d664 Manual compaction at level-0 from '\x00*\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00+\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/03/29-17:52:41.840 1d674 Compacting 1@1 + 1@2 files
-2025/03/29-17:52:42.104 1d674 Generated table #103@1: 49055 keys, 1872975 bytes
-2025/03/29-17:52:42.105 1d674 Compacted 1@1 + 1@2 files => 1872975 bytes
-2025/03/29-17:52:42.112 1d674 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/03/29-17:52:42.112 1d674 Delete type=2 #99
-2025/03/29-17:52:42.112 1d674 Delete type=2 #102
+2025/03/29-18:16:38.006 1f512 Reusing MANIFEST /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/03/29-18:16:38.007 1f512 Recovering log #109
+2025/03/29-18:16:38.044 1f512 Reusing old log /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000109.log 
+2025/03/29-18:16:40.429 1f54e Level-0 table #114: started
+2025/03/29-18:16:40.478 1f54e Level-0 table #114: 168098 bytes OK
+2025/03/29-18:16:40.494 1f54e Delete type=0 #109
+2025/03/29-18:16:40.495 1f54e Manual compaction at level-0 from '\x00-\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00.\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/03/29-18:16:44.142 1f54e Compacting 1@1 + 1@2 files
+2025/03/29-18:16:44.438 1f54e Generated table #115@1: 50907 keys, 1921163 bytes
+2025/03/29-18:16:44.438 1f54e Compacted 1@1 + 1@2 files => 1921163 bytes
+2025/03/29-18:16:44.446 1f54e compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/03/29-18:16:44.446 1f54e Delete type=2 #114
+2025/03/29-18:16:44.447 1f54e Delete type=2 #111
