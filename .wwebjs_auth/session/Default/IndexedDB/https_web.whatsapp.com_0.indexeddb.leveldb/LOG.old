@@ -1,15 +1,15 @@
-2025/03/30-01:31:15.522 33cdc Reusing MANIFEST /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/03/30-01:31:15.522 33cdc Recovering log #247
-2025/03/30-01:31:15.565 33cdc Reusing old log /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000247.log 
-2025/03/30-01:31:17.650 33ccc Level-0 table #253: started
-2025/03/30-01:31:17.691 33ccc Level-0 table #253: 423370 bytes OK
-2025/03/30-01:31:17.695 33ccc Delete type=0 #247
-2025/03/30-01:31:17.696 33ccc Manual compaction at level-0 from '\x00K\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00L\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/03/30-01:31:20.737 33ce1 Compacting 1@1 + 2@2 files
-2025/03/30-01:31:20.955 33ce1 Generated table #254@1: 69402 keys, 2235673 bytes
-2025/03/30-01:31:21.085 33ce1 Generated table #255@1: 24597 keys, 1138766 bytes
-2025/03/30-01:31:21.085 33ce1 Compacted 1@1 + 2@2 files => 3374439 bytes
-2025/03/30-01:31:21.090 33ce1 compacted to: files[ 0 0 2 0 0 0 0 ]
-2025/03/30-01:31:21.090 33ce1 Delete type=2 #253
-2025/03/30-01:31:21.090 33ce1 Delete type=2 #250
-2025/03/30-01:31:21.090 33ce1 Delete type=2 #249
+2025/03/30-14:15:17.792 29cd Reusing MANIFEST /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/03/30-14:15:17.792 29cd Recovering log #277
+2025/03/30-14:15:17.819 29cd Reusing old log /home/davis/Desktop/LOCAL_REPOSITORY/vendai-agent/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000277.log 
+2025/03/30-14:15:19.795 29cf Level-0 table #283: started
+2025/03/30-14:15:19.837 29cf Level-0 table #283: 342248 bytes OK
+2025/03/30-14:15:19.842 29cf Delete type=0 #277
+2025/03/30-14:15:19.843 29c8 Manual compaction at level-0 from '\x00Q\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00R\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/03/30-14:15:23.148 29d9 Compacting 1@1 + 2@2 files
+2025/03/30-14:15:23.365 29d9 Generated table #284@1: 73574 keys, 2238037 bytes
+2025/03/30-14:15:23.479 29d9 Generated table #285@1: 33630 keys, 1618691 bytes
+2025/03/30-14:15:23.479 29d9 Compacted 1@1 + 2@2 files => 3856728 bytes
+2025/03/30-14:15:23.484 29d9 compacted to: files[ 0 0 2 0 0 0 0 ]
+2025/03/30-14:15:23.484 29d9 Delete type=2 #280
+2025/03/30-14:15:23.484 29d9 Delete type=2 #279
+2025/03/30-14:15:23.484 29d9 Delete type=2 #283
