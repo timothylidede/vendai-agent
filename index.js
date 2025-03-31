@@ -150,6 +150,7 @@ class WhatsAppBot {
         // Initialize the client
         this.client.on('message', this.handleMessage.bind(this));
         this.client.initialize();
+        console.log('Client initialized...');
     }
 
     async handleMessage(msg) {
