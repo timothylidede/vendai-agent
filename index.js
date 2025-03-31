@@ -132,6 +132,22 @@ class WhatsAppBot {
 
     initializeWhatsAppClient() {
         this.client = new Client({ authStrategy: new LocalAuth() });
+        // Event when authentication is successful
+        this.client.on('authenticated', () => {
+            console.log('Client is authenticated!');
+        });
+        
+        // Event when the client is fully ready
+        this.client.on('ready', () => {
+            console.log('Client is ready and fully authenticated!');
+        });
+        
+        // Event for authentication failure
+        this.client.on('auth_failure', (msg) => {
+            console.error('Authentication failed:', msg);
+        });
+        
+        // Initialize the client
         this.client.on('message', this.handleMessage.bind(this));
         this.client.initialize();
     }
@@ -145,6 +161,13 @@ class WhatsAppBot {
         const contact = await this.client.getContactById(userNumber);
         const displayName = contact.pushname || 'Customer';
         const userInput = msg.body.trim();
+        if (msg.body === '!typing') {
+            const chat = await client.getChatById(msg.from);
+            chat.sendStateTyping(); // Start typing indicator
+            setTimeout(() => {
+                chat.clearState();  // Clear typing status after 25 seconds
+            }, 25000);
+        }
 
         if (!this.userSessions.has(userNumber)) {
             this.userSessions.set(userNumber, {
